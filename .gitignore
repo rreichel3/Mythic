@@ -164,6 +164,11 @@ _ReSharper*/
 # vscode
 .vscode/
 
+# Node.js
+node_modules/
+MythicReactUI/node_modules/
+MythicReactUI/build/
+
 jupyter-docker/jupyter/MythicExamples/.ipynb_checkpoints/
 
 nginx-docker/config/blockips.conf
