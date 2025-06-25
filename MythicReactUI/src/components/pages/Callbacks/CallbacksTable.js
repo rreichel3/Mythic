@@ -12,6 +12,7 @@ import {
     CallbacksTableIDCell,
     CallbacksTableStringCell,
     CallbacksTableLastCheckinCell,
+    CallbacksTableFirstCheckinCell,
     CallbacksTablePayloadTypeCell,
     CallbacksTableC2Cell,
     CallbacksTableOSCell,
@@ -104,6 +105,7 @@ const callbackTableInitialColumns = [
     {key: "architecture", type: 'string', name: "Arch", width: 75},
     {key: "pid", type: 'number', name: "PID", width: 75},
     {key: "last_checkin", type: 'timestamp', name: "Last Checkin", width: 150, disableFilterMenu: true, disableDoubleClick: true},
+    {key: "init_callback", type: 'timestamp', name: "First Checkin", width: 150, disableFilterMenu: true, disableDoubleClick: true},
     {key: "description", type: 'string', name: "Description", width: 400},
     {key: "sleep", type: 'string', name: "Sleep", width: 60, disableFilterMenu: true, disableSort: true, disableDoubleClick: true},
     {key: "agent", type: 'agent', name: "Agent", width: 150},
@@ -803,6 +805,13 @@ function CallbacksTablePreMemo(props){
                                                                       rowStyle: {backgroundColor: `${row.color}`},
                                                                   }}
                                                                   cellData={row.last_checkin} />;
+                        case "First Checkin":
+                            return <CallbacksTableFirstCheckinCell key={`callback${row.id}_${c.name}`} me={props.me}
+                                                                  rowData={{...row,
+                                                                      selected: row.id === clickedCallbackID,
+                                                                      rowStyle: {backgroundColor: `${row.color}`},
+                                                                  }}
+                                                                  cellData={row.init_callback} />;
                         case "Description":
                             return <CallbacksTableStringCell key={`callback${row.id}_${c.name}`} cellData={row.description}
                                                              rowData={{...row,

@@ -30,12 +30,12 @@ export const operatorSettingDefaults =  {
     useDisplayParamsForCLIHistory: true,
     interactType: "interact",
     taskTimestampDisplayField: "timestamp",
-    callbacks_table_columns: ["Interact", "Host", "Domain", "User", "Description", "Last Checkin", "Agent",  "IP", "PID"],
+    callbacks_table_columns: ["Interact", "Host", "Domain", "User", "Description", "Last Checkin", "First Checkin", "Agent",  "IP", "PID"],
     callbacks_table_filters: {},
     autoTaskLsOnEmptyDirectories: false,
     hideBrowserTasking: false,
     hideTaskingContext: false,
-    ["experiment-responseStreamLimit"]: 50,
+    "experiment-responseStreamLimit": 50,
     palette: {
         primary: {
             dark: "#75859b",
