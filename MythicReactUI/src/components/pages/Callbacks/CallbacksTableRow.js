@@ -194,6 +194,39 @@ export const CallbacksTableLastCheckinCell = React.memo( ({rowData, cellData, me
         
     )
 }, areEqual);
+export const CallbacksTableFirstCheckinCell = React.memo( ({rowData, cellData, me}) => {
+    const adjustOutput = (newTime) => {
+        if(newTime === "a few seconds"){
+            moment.relativeTimeThreshold('s', 60);
+            moment.relativeTimeThreshold('ss', 0);
+            return moment(rowData.init_callback + "Z", "YYYY-MM-DDTHH:mm:ss.SSSSSSZ").subtract(me?.user?.server_skew || 0, 'millisecond').fromNow(true)
+        }
+        return moment(rowData.init_callback + "Z", "YYYY-MM-DDTHH:mm:ss.SSSSSSZ").subtract(me?.user?.server_skew || 0, 'millisecond').fromNow(true);
+    }
+    const theme = useTheme();
+    if(rowData?.payload?.payloadtype?.agent_type !== "agent"){
+        return ""
+    }
+    if(rowData.init_callback === "1970-01-01T00:00:00"){
+        return (
+            <>
+            {"N/A"}
+            </>
+        )
+    }
+    return (
+        <div style={{display: "flex", alignItems: "center"}}>
+            <Moment filter={adjustOutput} interval={1000} parse={"YYYY-MM-DDTHH:mm:ss.SSSSSSZ"}
+                withTitle
+                titleFormat={"YYYY-MM-DD HH:mm:ss"}
+                fromNow ago
+            >
+                {rowData.init_callback + "Z"}
+            </Moment>
+        </div>
+        
+    )
+}, areEqual);
 export const CallbacksTablePayloadTypeCell = React.memo( ({rowData}) => {
     return (
         rowData?.payload?.payloadtype?.name

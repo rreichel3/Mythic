@@ -40,6 +40,7 @@ callback_stream(batch_size: 1000, cursor: {initial_value: {timestamp: $fromNow}}
     operation_id
     process_short_name
     last_checkin
+    init_callback
     current_time
     mythictree_groups
     trigger_on_checkin_after_time
@@ -104,6 +105,7 @@ callback(where: {active: {_eq: true}}) {
     operation_id
     process_short_name
     last_checkin
+    init_callback
     current_time
     mythictree_groups
     trigger_on_checkin_after_time
